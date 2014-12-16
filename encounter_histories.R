@@ -1,5 +1,6 @@
 # Making Encounter Histories
-setwd("~/Documents/RMark")
+setwd("~/RMark")
+library(reshape)
 dat <- read.csv('direct_recoveries_cago_ar_banded_2002_2011_metal_only.csv',header=T)
 dat <- dat[,c("band","b_year","r_year","b_month","r_month")]
 dat$b_new_year <- ifelse(dat$b_month>=6,dat$b_year, dat$b_year+1)
@@ -16,3 +17,6 @@ cdat[2:ncol(cdat)] <- ifelse(cdat[2:ncol(cdat)]>=1, 1,0)
 
 cdat$cap <- paste(cdat$"2002", cdat$"2003",cdat$"2004",cdat$"2005",cdat$"2006",cdat$"2007",cdat$"2008",cdat$"2009",cdat$"2010",cdat$"2011",cdat$"2012", sep="")
 
+enhist <- data.frame(cdat$band, cdat$cap)
+enhist$cdat.cap <- as.character(enhist$cdat.cap)
+write.csv(enhist, 'enhist.csv')
