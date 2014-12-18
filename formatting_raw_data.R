@@ -12,7 +12,7 @@ dat1$e_date <- NA
 dat1$e_day <- NA
 dat1$e_month <- NA
 dat1$e_year <- NA
-dat1$e_present_code <- NA
+dat1$e_present_code <- 7
 
 dat2 <- dat2[,c("BAND_NUM","B_AGE_CODE","B_SEX_CODE","BANDING_DATE","BANDING_DAY","BANDING_MONTH","BANDING_YEAR","E_PLACE_NAME","ENCOUNTER_DATE","ENCOUNTER_DAY","ENCOUNTER_MONTH","ENCOUNTER_YEAR","E_PRESENT_CONDITION_CODE")]
 
