@@ -10,8 +10,8 @@ e <- dat[,c("band_id","e_new_year","l_d","b_age_code","b_sex_code")]
 colnames(e) <- c("band_id","year","l_d","age","sex")
 rat <- rbind(b,e)
 rat$num <- 1
-rat <- rat[rat$year>=2000,]
-
+rat <- rat[rat$year>=2005,]
+rat <- rat[rat$year<=2011,]
 
 
 
@@ -27,10 +27,23 @@ write.csv(enhist, 'enhist.csv')
 
 # live/dead recover encouter history ------------------------------
 rat <- rat[rat$l_d != "unknown",] #remove the unknowns
+rat <- rat[rat$sex != 0,] #removes unknown sex
+rat <- rat[rat$age != 0,] #removes unknown age
 rat <- rat[!(is.na(rat$l_d)),] # remove the NA's
 cdat <- cast(data=rat, band_id + sex + age ~ year + l_d)
 cdat[4:ncol(cdat)] <- ifelse(cdat[4:ncol(cdat)]>=1, 1,0)
-cdat$cap <- paste(cdat$"2000_alive",cdat$"2000_dead",cdat$"2001_alive",cdat$"2001_dead",cdat$"2002_alive",cdat$"2002_dead",cdat$"2003_alive", cdat$"2003_dead",cdat$"2004_alive",cdat$"2004_dead",cdat$"2005_alive",cdat$"2005_dead",cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead",cdat$"2012_alive",cdat$"2012_dead",cdat$"2013_alive",cdat$"2013_dead",cdat$"2014_alive",cdat$"2014_dead", sep="")
+#create capture history
+cdat$cap <- paste(cdat$"2005_alive",cdat$"2005_dead",cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead", sep="")
+# below removes birds banded before 2005 that were never recovered during the study period
+cdat <- cdat[!(cdat$"2005_alive"==0&cdat$"2006_alive"==0&cdat$"2007_alive"==0&cdat$"2008_alive"==0&cdat$"2009_alive"==0&cdat$"2010_alive"==0&cdat$"2011_alive"==0),]
+
+hunt <- as.data.frame(matrix(ncol=7, nrow=nrow(cdat)))
+hunt$V1 <- 1
+hunt$V2 <- 1
+hunt[,3:ncol(hunt)] <- 0
+
+hunt <- make.time.factor(hunt, "V",1:7,intercept=0)
+
 enhist <- data.frame(cdat$band_id, cdat$sex , cdat$age, cdat$cap)
 enhist$cdat.cap <- as.character(enhist$cdat.cap)
 colnames(enhist) <- c("band","sex","age","ch")

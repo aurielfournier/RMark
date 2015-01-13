@@ -1,0 +1,23 @@
+
+   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   13-Jan-2015 11:10:25    Page  001
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   This version was compiled by GCC version 4.8.1 using the options 
+   -m64 -mtune=generic -march=x86-64 -mthreads -O2 -fimplicit-none -fbounds-check -funroll-loops -ftree-vectorize -fopenmp.
+   This problem will use 3 of 4 possible threads.
+
+
+  INPUT --- proc title ;
+
+     CPU Time in seconds for last procedure was 0.00
+
+
+  INPUT --- proc chmatrix occasions= 15 groups= 1 etype= Barker ICMeans 
+  INPUT --- NoHist hist= 248 ;
+
+  INPUT ---    time  interval 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+
+  INPUT ---    glabel(1)=Group 1;
+
+ ERROR -- Animal was never released: 000000000000000000000000000001
