@@ -1,0 +1,267 @@
+
+   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   21-Jan-2015 17:31:44    Page  001
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   This version was compiled by GCC version 4.8.1 using the options 
+   -m64 -mtune=generic -march=x86-64 -mthreads -O2 -fimplicit-none -fbounds-check -funroll-loops -ftree-vectorize -fopenmp.
+   This problem will use 3 of 4 possible threads.
+
+
+  INPUT --- proc title ;
+
+     CPU Time in seconds for last procedure was 0.00
+
+
+  INPUT --- proc chmatrix occasions= 7 groups= 2 etype= Live ICMeans 
+  INPUT --- NoHist hist= 55 ;
+
+  INPUT ---    time  interval 1 1 1 1 1 1 ;
+
+  INPUT ---    glabel(1)=sexFemale;
+
+  INPUT ---    glabel(2)=sexMale;
+
+   * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
+
+      Number of unique encounter histories read was 32.
+
+      Number of individual covariates read was 0.
+      Time interval lengths are all equal to 1.
+
+      Data type number is 1
+      Data type is Live Recaptures (CJS)                                                                               
+
+     CPU Time in seconds for last procedure was 0.00
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   21-Jan-2015 17:31:44    Page  002
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+  INPUT --- proc estimate link=Logit NOLOOP varest=2ndPart    ;
+
+
+  INPUT --- model={ Phi(~sex)p(~sex * time) };
+
+  INPUT ---    group=1 Phi    rows=6 cols=6 Triang ;
+  INPUT ---        1 1 1 1 1 1 ;
+  INPUT ---        1 1 1 1 1 ;
+  INPUT ---        1 1 1 1 ;
+  INPUT ---        1 1 1 ;
+  INPUT ---        1 1 ;
+  INPUT ---        1 ;
+
+  INPUT ---    group=2 Phi    rows=6 cols=6 Triang ;
+  INPUT ---        2 2 2 2 2 2 ;
+  INPUT ---        2 2 2 2 2 ;
+  INPUT ---        2 2 2 2 ;
+  INPUT ---        2 2 2 ;
+  INPUT ---        2 2 ;
+  INPUT ---        2 ;
+
+  INPUT ---    group=1 p    rows=6 cols=6 Triang ;
+  INPUT ---        3 4 5 6 7 8 ;
+  INPUT ---        4 5 6 7 8 ;
+  INPUT ---        5 6 7 8 ;
+  INPUT ---        6 7 8 ;
+  INPUT ---        7 8 ;
+  INPUT ---        8 ;
+
+  INPUT ---    group=2 p    rows=6 cols=6 Triang ;
+  INPUT ---        9 10 11 12 13 14 ;
+  INPUT ---        10 11 12 13 14 ;
+  INPUT ---        11 12 13 14 ;
+  INPUT ---        12 13 14 ;
+  INPUT ---        13 14 ;
+  INPUT ---        14 ;
+
+  INPUT ---    design matrix constraints=14 covariates=14;
+  INPUT ---        1 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 1 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 1 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 1 0 1 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 1 0 0 1 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 1 0 0 0 1 0 0 0 0 0 0 0;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   21-Jan-2015 17:31:44    Page  003
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        0 0 1 0 0 0 0 1 0 0 0 0 0 0;
+  INPUT ---        0 0 1 0 0 0 0 0 1 0 0 0 0 0;
+  INPUT ---        0 0 1 1 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 1 1 1 0 0 0 0 1 0 0 0 0;
+  INPUT ---        0 0 1 1 0 1 0 0 0 0 1 0 0 0;
+  INPUT ---        0 0 1 1 0 0 1 0 0 0 0 1 0 0;
+  INPUT ---        0 0 1 1 0 0 0 1 0 0 0 0 1 0;
+  INPUT ---        0 0 1 1 0 0 0 0 1 0 0 0 0 1;
+
+  INPUT ---    blabel(1)=Phi:(Intercept);
+
+  INPUT ---    blabel(2)=Phi:sexMale;
+
+  INPUT ---    blabel(3)=p:(Intercept);
+
+  INPUT ---    blabel(4)=p:sexMale;
+
+  INPUT ---    blabel(5)=p:time3;
+
+  INPUT ---    blabel(6)=p:time4;
+
+  INPUT ---    blabel(7)=p:time5;
+
+  INPUT ---    blabel(8)=p:time6;
+
+  INPUT ---    blabel(9)=p:time7;
+
+  INPUT ---    blabel(10)=p:sexMale:time3;
+
+  INPUT ---    blabel(11)=p:sexMale:time4;
+
+  INPUT ---    blabel(12)=p:sexMale:time5;
+
+  INPUT ---    blabel(13)=p:sexMale:time6;
+
+  INPUT ---    blabel(14)=p:sexMale:time7;
+
+  INPUT ---    rlabel(1)=Phi gFemale c1 c1 a0 t1;
+
+  INPUT ---    rlabel(2)=Phi gMale c1 c1 a0 t1;
+
+  INPUT ---    rlabel(3)=p gFemale c1 c1 a1 t2;
+
+  INPUT ---    rlabel(4)=p gFemale c1 c1 a2 t3;
+
+  INPUT ---    rlabel(5)=p gFemale c1 c1 a3 t4;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   21-Jan-2015 17:31:44    Page  004
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+  INPUT ---    rlabel(6)=p gFemale c1 c1 a4 t5;
+
+  INPUT ---    rlabel(7)=p gFemale c1 c1 a5 t6;
+
+  INPUT ---    rlabel(8)=p gFemale c1 c1 a6 t7;
+
+  INPUT ---    rlabel(9)=p gMale c1 c1 a1 t2;
+
+  INPUT ---    rlabel(10)=p gMale c1 c1 a2 t3;
+
+  INPUT ---    rlabel(11)=p gMale c1 c1 a3 t4;
+
+  INPUT ---    rlabel(12)=p gMale c1 c1 a4 t5;
+
+  INPUT ---    rlabel(13)=p gMale c1 c1 a5 t6;
+
+  INPUT ---    rlabel(14)=p gMale c1 c1 a6 t7;
+
+ Link Function Used is LOGIT        
+
+ Variance Estimation Procedure Used is 2ndPart 
+ -2logL(saturated) = 582.47711     
+ Effective Sample Size = 426
+
+ Number of function evaluations was 60 for 14 parameters.
+ Time for numerical optimization was 0.11 seconds.
+ -2logL { Phi(~sex)p(~sex * time) } = 662.24967     
+ Penalty { Phi(~sex)p(~sex * time) } = -0.0000000    
+ Gradient { Phi(~sex)p(~sex * time) }:
+  0.2766809E-04 0.1128483E-04 0.1030947E-04 0.1926185E-04 0.8409986E-05
+  0.2107783E-04 0.1238689E-04 0.8796214E-05 0.1359041E-04  0.000000    
+  0.2148471E-04 0.1595182E-04 0.1765758E-04  0.000000    
+ S Vector { Phi(~sex)p(~sex * time) }:
+   137.2944      20.82568      13.30557      3.373914      2.727906    
+   2.351741      1.257883     0.8326431     0.5313625     0.4013486    
+  0.3482892     0.6606392E-01 0.1009724E-07 0.5990260E-09
+ Time to compute number of parameters was 0.03 seconds.
+   Threshold =  0.3000000E-06     Condition index =  0.4363076E-11     New Threshold =  0.2241350E-08
+ New Guessimate of Estimated Parameters { Phi(~sex)p(~sex * time) } = 12          
+ Conditioned S Vector { Phi(~sex)p(~sex * time) }:
+   1.000000     0.1516862     0.9691264E-01 0.2457430E-01 0.1986903E-01
+  0.1712918E-01 0.9161937E-02 0.6064654E-02 0.3870241E-02 0.2923270E-02
+  0.2536805E-02 0.4811843E-03 0.7354445E-10 0.4363076E-11
+ Number of Estimated Parameters { Phi(~sex)p(~sex * time) } = 12          
+ DEVIANCE { Phi(~sex)p(~sex * time) } = 79.772560                     
+ DEVIANCE Degrees of Freedom { Phi(~sex)p(~sex * time) } = 29            
+ c-hat { Phi(~sex)p(~sex * time) } = 2.7507779                     
+ AIC { Phi(~sex)p(~sex * time) } = 686.24967                  
+ AICc { Phi(~sex)p(~sex * time) } = 687.00512                    
+ BIC { Phi(~sex)p(~sex * time) } = 734.90294                    
+ Pearson Chisquare { Phi(~sex)p(~sex * time) } = 195.10259                  
+ Possible Encounter Histories { Phi(~sex)p(~sex * time) } = 252             
+ Pearson Chisquare df { Phi(~sex)p(~sex * time) } = 228        
+ Pearson chat { Phi(~sex)p(~sex * time) } = 0.8557131                  
+ Sum(Observed/Expected) { Phi(~sex)p(~sex * time) } = 221.72186                  
+ Fletcher chat { Phi(~sex)p(~sex * time) } = 0.9725685                  
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   21-Jan-2015 17:31:44    Page  005
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+                 LOGIT Link Function Parameters of { Phi(~sex)p(~sex * time) }
+                                                              95% Confidence Interval
+ Parameter                    Beta         Standard Error      Lower           Upper
+ -------------------------  --------------  --------------  --------------  --------------
+    1:Phi:(Intercept)       0.2326854       0.1563902       -0.0738394      0.5392102     
+    2:Phi:sexMale           -0.0074304      0.2091489       -0.4173623      0.4025015     
+    3:p:(Intercept)         1.2054829       1.0581529       -0.8684969      3.2794626     
+    4:p:sexMale             0.1804352       1.4888210       -2.7376541      3.0985244     
+    5:p:time3               0.3518077       1.3760476       -2.3452457      3.0488612     
+    6:p:time4               0.6181004       1.4022045       -2.1302204      3.3664212     
+    7:p:time5               0.8355991       1.2796506       -1.6725162      3.3437143     
+    8:p:time6               1.5849037       1.4603146       -1.2773130      4.4471205     
+    9:p:time7               0.6730447       1.6059853       -2.4746864      3.8207759     
+   10:p:sexMale:time3       27.120832       0.6334786E-003  27.119590       27.122073     
+   11:p:sexMale:time4       0.0583044       2.0021794       -3.8659673      3.9825761     
+   12:p:sexMale:time5       0.4253776       1.9349198       -3.3670652      4.2178204     
+   13:p:sexMale:time6       -0.2876828      2.0567504       -4.3189136      3.7435480     
+   14:p:sexMale:time7       18.372795       9951.7302       -19487.019      19523.764     
+
+
+                 Real Function Parameters of { Phi(~sex)p(~sex * time) }
+                                                               95% Confidence Interval
+  Parameter                  Estimate       Standard Error      Lower           Upper
+ --------------------------  --------------  --------------  --------------  --------------
+     1:Phi gFemale c1 c1 a0  0.5579103       0.0385731       0.4815485       0.6316287                           
+     2:Phi gMale c1 c1 a0 t  0.5560768       0.0342813       0.4882687       0.6218584                           
+     3:p gFemale c1 c1 a1 t  0.7694987       0.1876850       0.2955672       0.9637175                           
+     4:p gFemale c1 c1 a2 t  0.8259642       0.1308636       0.4434828       0.9658294                           
+     5:p gFemale c1 c1 a3 t  0.8609955       0.1110933       0.5010604       0.9744920                           
+     6:p gFemale c1 c1 a4 t  0.8850434       0.0734700       0.6515183       0.9694227                           
+     7:p gFemale c1 c1 a5 t  0.9421541       0.0550233       0.6924413       0.9915844                           
+     8:p gFemale c1 c1 a6 t  0.8674419       0.1405607       0.3734610       0.9862714                           
+     9:p gMale c1 c1 a1 t2   0.7999398       0.1676128       0.3391968       0.9688927                           
+    10:p gMale c1 c1 a2 t3   1.0000000       0.5068503E-012  1.0000000       1.0000000                           
+    11:p gMale c1 c1 a3 t4   0.8871869       0.0974768       0.5382811       0.9814984                           
+    12:p gMale c1 c1 a4 t5   0.9338193       0.0621568       0.6627565       0.9902258                           
+    13:p gMale c1 c1 a5 t6   0.9360244       0.0599697       0.6726717       0.9904912                           
+    14:p gMale c1 c1 a6 t7   1.0000000       0.1331984E-004  0.9999739       1.0000261                           
+
+ Attempted ordering of parameters by estimatibility:
+   1  2  3  7  4  6  8  5 12  9 11 13 14 10
+ Beta number 10 is a singular value.
+
+     CPU Time in seconds for last procedure was 0.16
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   21-Jan-2015 17:31:44    Page  006
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+  INPUT --- proc stop;
+
+     CPU Time in minutes for this job was 0.00
+
+     Time Start = 17:31:44.714   Time End = 17:31:44.818
+
+     Wall Clock Time in minutes for this job was 0.00
+
+
+          E X E C U T I O N   S U C C E S S F U L 

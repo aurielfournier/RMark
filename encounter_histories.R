@@ -47,5 +47,5 @@ hunt <- make.time.factor(hunt, "V",1:7,intercept=0)
 enhist <- data.frame(cdat$band_id, cdat$sex , cdat$age, cdat$cap)
 enhist$cdat.cap <- as.character(enhist$cdat.cap)
 colnames(enhist) <- c("band","sex","age","ch")
-write.csv(enhist, 'live_dead_enhist.csv')
-
+write.csv(enhist, 'live_dead_enhist.csv', row.names=F)
+write.table(enhist[,4], 'live_dead_enhist.inp', row.names=F, col.names=F)
