@@ -34,12 +34,26 @@ cdat <- cast(data=rat, band_id ~ year + l_d)
 sex <- cast(data=rat, band_id ~ sex)
 age <- cast(data=rat, band_id ~ age)
 
+cdat[2:ncol(cdat)] <- ifelse(cdat[2:ncol(cdat)]>=1, 1,0)
+
+cdat[,4:ncol(cdat)][cdat$"2005_dead"==1,]<-0
+cdat[,6:ncol(cdat)][cdat$"2006_dead"==1,]<-0
+cdat[,8:ncol(cdat)][cdat$"2007_dead"==1,]<-0
+cdat[,10:ncol(cdat)][cdat$"2008_dead"==1,]<-0
+cdat[,12:ncol(cdat)][cdat$"2009_dead"==1,]<-0
+cdat[,14:ncol(cdat)][cdat$"2010_dead"==1,]<-0
+
+
+
 cdat <- cbind(cdat, sex[,2:3])
 cdat <- cbind(cdat, age[,2:4])
-
 cdat[2:ncol(cdat)] <- ifelse(cdat[2:ncol(cdat)]>=1, 1,0)
+
+
+
+colnames(cdat) <- c("band_id","2005_alive","2005_dead","2006_alive","2006_dead","2007_alive","2007_dead","2008_alive","2008_dead","2009_alive","2009_dead","2010_alive","2010_dead","2011_alive","2011_dead","male","female","ahy","hy","local")
 #create capture history
-cdat$cap <- paste(cdat$"2005_alive",cdat$"2005_dead",cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead", " ", cdat$"4", " ", cdat$"5",";",sep="")
+cdat$cap <- paste(cdat$"2005_alive",cdat$"2005_dead",cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead", " ", cdat$male, " ", cdat$female," ",cdat$ahy," ",cdat$hy," ", cdat$local, ";", sep="")
 # below removes birds banded before 2005 that were never recovered during the study period
 cdat <- cdat[!(cdat$"2005_alive"==0&cdat$"2006_alive"==0&cdat$"2007_alive"==0&cdat$"2008_alive"==0&cdat$"2009_alive"==0&cdat$"2010_alive"==0&cdat$"2011_alive"==0),]
 
@@ -47,4 +61,4 @@ cdat <- cdat[!(cdat$"2005_alive"==0&cdat$"2006_alive"==0&cdat$"2007_alive"==0&cd
 enhist <- data.frame(cdat$band_id, cdat$cap)
 
 
-write.table(enhist[,2], 'live_dead_enhist.inp', row.names=F, col.names=F, quote=F)
+write.table(enhist[,2], 'live_dead_enhist_clean.inp', row.names=F, col.names=F, quote=F)
