@@ -38,4 +38,4 @@ dat1_2$l_d <- ifelse(dat1_2$e_present_condition_code==1|dat1_2$e_present_conditi
                         ifelse(dat1_2$e_present_condition_code==7|dat1_2$e_present_condition_code==8|dat1_2$e_present_condition_code==9|dat1_2$e_present_condition_code==10|dat1_2$e_present_condition_code==11|dat1_2$e_present_condition_code==12|dat1_2$e_present_condition_code==13|dat1_2$e_present_condition_code==14|dat1_2$e_present_condition_code==15|dat1_2$e_present_condition_code==16,"alive",NA)))
 
 dat1_2 <- dat1_2[dat1_2$banding_year>=2000,]
-write.csv(dat1_2, "canada_geese_arkansas.csv")
+write.csv(dat1_2, "canada_geese_arkansas.csv", row.names=F)

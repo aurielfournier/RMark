@@ -1,0 +1,522 @@
+
+   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  001
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   This version was compiled by GCC version 4.8.1 using the options 
+   -m64 -mtune=generic -march=x86-64 -mthreads -O2 -fimplicit-none -fbounds-check -funroll-loops -ftree-vectorize -fopenmp.
+   This problem will use 7 of 8 possible threads.
+
+
+  INPUT --- proc title ;
+
+     CPU Time in seconds for last procedure was 0.00
+
+
+  INPUT --- proc chmatrix occasions= 7 groups= 6 etype= Both ICMeans 
+  INPUT --- NoHist hist= 51 ;
+
+  INPUT ---    time  interval 1 1 1 1 1 1 1 ;
+
+  INPUT ---    glabel(1)=sex4.age1;
+
+  INPUT ---    glabel(2)=sex5.age1;
+
+  INPUT ---    glabel(3)=sex4.age2;
+
+  INPUT ---    glabel(4)=sex5.age2;
+
+  INPUT ---    glabel(5)=sex4.age4;
+
+  INPUT ---    glabel(6)=sex5.age4;
+
+   * *  WARNING  * *   At least a pair of the encounter histories are duplicates. 
+
+      Number of unique encounter histories read was 17.
+
+      Number of individual covariates read was 0.
+      Time interval lengths are all equal to 1.
+
+      Data type number is 3
+      Data type is Joint Live and Dead Encounters (Burnham)                                                            
+
+     CPU Time in seconds for last procedure was 0.00
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  002
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+  INPUT --- proc estimate link=Logit NOLOOP varest=2ndPart    ;
+
+
+  INPUT --- model={ S(~time)p(~age)r(~1)F(~age) };
+
+  INPUT ---    group=1 S    rows=7 cols=7 Triang ;
+  INPUT ---        1 2 3 4 5 6 7 ;
+  INPUT ---        2 3 4 5 6 7 ;
+  INPUT ---        3 4 5 6 7 ;
+  INPUT ---        4 5 6 7 ;
+  INPUT ---        5 6 7 ;
+  INPUT ---        6 7 ;
+  INPUT ---        7 ;
+
+  INPUT ---    group=2 S    rows=7 cols=7 Triang ;
+  INPUT ---        1 2 3 4 5 6 7 ;
+  INPUT ---        2 3 4 5 6 7 ;
+  INPUT ---        3 4 5 6 7 ;
+  INPUT ---        4 5 6 7 ;
+  INPUT ---        5 6 7 ;
+  INPUT ---        6 7 ;
+  INPUT ---        7 ;
+
+  INPUT ---    group=3 S    rows=7 cols=7 Triang ;
+  INPUT ---        1 2 3 4 5 6 7 ;
+  INPUT ---        2 3 4 5 6 7 ;
+  INPUT ---        3 4 5 6 7 ;
+  INPUT ---        4 5 6 7 ;
+  INPUT ---        5 6 7 ;
+  INPUT ---        6 7 ;
+  INPUT ---        7 ;
+
+  INPUT ---    group=4 S    rows=7 cols=7 Triang ;
+  INPUT ---        1 2 3 4 5 6 7 ;
+  INPUT ---        2 3 4 5 6 7 ;
+  INPUT ---        3 4 5 6 7 ;
+  INPUT ---        4 5 6 7 ;
+  INPUT ---        5 6 7 ;
+  INPUT ---        6 7 ;
+  INPUT ---        7 ;
+
+  INPUT ---    group=5 S    rows=7 cols=7 Triang ;
+  INPUT ---        1 2 3 4 5 6 7 ;
+  INPUT ---        2 3 4 5 6 7 ;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  003
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        3 4 5 6 7 ;
+  INPUT ---        4 5 6 7 ;
+  INPUT ---        5 6 7 ;
+  INPUT ---        6 7 ;
+  INPUT ---        7 ;
+
+  INPUT ---    group=6 S    rows=7 cols=7 Triang ;
+  INPUT ---        1 2 3 4 5 6 7 ;
+  INPUT ---        2 3 4 5 6 7 ;
+  INPUT ---        3 4 5 6 7 ;
+  INPUT ---        4 5 6 7 ;
+  INPUT ---        5 6 7 ;
+  INPUT ---        6 7 ;
+  INPUT ---        7 ;
+
+  INPUT ---    group=1 p    rows=6 cols=6 Triang ;
+  INPUT ---        8 9 10 11 12 13 ;
+  INPUT ---        8 9 10 11 12 ;
+  INPUT ---        8 9 10 11 ;
+  INPUT ---        8 9 10 ;
+  INPUT ---        8 9 ;
+  INPUT ---        8 ;
+
+  INPUT ---    group=2 p    rows=6 cols=6 Triang ;
+  INPUT ---        8 9 10 11 12 13 ;
+  INPUT ---        8 9 10 11 12 ;
+  INPUT ---        8 9 10 11 ;
+  INPUT ---        8 9 10 ;
+  INPUT ---        8 9 ;
+  INPUT ---        8 ;
+
+  INPUT ---    group=3 p    rows=6 cols=6 Triang ;
+  INPUT ---        8 9 10 11 12 13 ;
+  INPUT ---        8 9 10 11 12 ;
+  INPUT ---        8 9 10 11 ;
+  INPUT ---        8 9 10 ;
+  INPUT ---        8 9 ;
+  INPUT ---        8 ;
+
+  INPUT ---    group=4 p    rows=6 cols=6 Triang ;
+  INPUT ---        8 9 10 11 12 13 ;
+  INPUT ---        8 9 10 11 12 ;
+  INPUT ---        8 9 10 11 ;
+  INPUT ---        8 9 10 ;
+  INPUT ---        8 9 ;
+  INPUT ---        8 ;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  004
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+  INPUT ---    group=5 p    rows=6 cols=6 Triang ;
+  INPUT ---        8 9 10 11 12 13 ;
+  INPUT ---        8 9 10 11 12 ;
+  INPUT ---        8 9 10 11 ;
+  INPUT ---        8 9 10 ;
+  INPUT ---        8 9 ;
+  INPUT ---        8 ;
+
+  INPUT ---    group=6 p    rows=6 cols=6 Triang ;
+  INPUT ---        8 9 10 11 12 13 ;
+  INPUT ---        8 9 10 11 12 ;
+  INPUT ---        8 9 10 11 ;
+  INPUT ---        8 9 10 ;
+  INPUT ---        8 9 ;
+  INPUT ---        8 ;
+
+  INPUT ---    group=1 r    rows=7 cols=7 Triang ;
+  INPUT ---        14 14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 ;
+  INPUT ---        14 14 14 ;
+  INPUT ---        14 14 ;
+  INPUT ---        14 ;
+
+  INPUT ---    group=2 r    rows=7 cols=7 Triang ;
+  INPUT ---        14 14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 ;
+  INPUT ---        14 14 14 ;
+  INPUT ---        14 14 ;
+  INPUT ---        14 ;
+
+  INPUT ---    group=3 r    rows=7 cols=7 Triang ;
+  INPUT ---        14 14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 ;
+  INPUT ---        14 14 14 ;
+  INPUT ---        14 14 ;
+  INPUT ---        14 ;
+
+  INPUT ---    group=4 r    rows=7 cols=7 Triang ;
+  INPUT ---        14 14 14 14 14 14 14 ;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  005
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 ;
+  INPUT ---        14 14 14 ;
+  INPUT ---        14 14 ;
+  INPUT ---        14 ;
+
+  INPUT ---    group=5 r    rows=7 cols=7 Triang ;
+  INPUT ---        14 14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 ;
+  INPUT ---        14 14 14 ;
+  INPUT ---        14 14 ;
+  INPUT ---        14 ;
+
+  INPUT ---    group=6 r    rows=7 cols=7 Triang ;
+  INPUT ---        14 14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 14 ;
+  INPUT ---        14 14 14 14 ;
+  INPUT ---        14 14 14 ;
+  INPUT ---        14 14 ;
+  INPUT ---        14 ;
+
+  INPUT ---    group=1 F    rows=6 cols=6 Triang ;
+  INPUT ---        15 16 17 18 19 20 ;
+  INPUT ---        15 16 17 18 19 ;
+  INPUT ---        15 16 17 18 ;
+  INPUT ---        15 16 17 ;
+  INPUT ---        15 16 ;
+  INPUT ---        15 ;
+
+  INPUT ---    group=2 F    rows=6 cols=6 Triang ;
+  INPUT ---        15 16 17 18 19 20 ;
+  INPUT ---        15 16 17 18 19 ;
+  INPUT ---        15 16 17 18 ;
+  INPUT ---        15 16 17 ;
+  INPUT ---        15 16 ;
+  INPUT ---        15 ;
+
+  INPUT ---    group=3 F    rows=6 cols=6 Triang ;
+  INPUT ---        15 16 17 18 19 20 ;
+  INPUT ---        15 16 17 18 19 ;
+  INPUT ---        15 16 17 18 ;
+  INPUT ---        15 16 17 ;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  006
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        15 16 ;
+  INPUT ---        15 ;
+
+  INPUT ---    group=4 F    rows=6 cols=6 Triang ;
+  INPUT ---        15 16 17 18 19 20 ;
+  INPUT ---        15 16 17 18 19 ;
+  INPUT ---        15 16 17 18 ;
+  INPUT ---        15 16 17 ;
+  INPUT ---        15 16 ;
+  INPUT ---        15 ;
+
+  INPUT ---    group=5 F    rows=6 cols=6 Triang ;
+  INPUT ---        15 16 17 18 19 20 ;
+  INPUT ---        15 16 17 18 19 ;
+  INPUT ---        15 16 17 18 ;
+  INPUT ---        15 16 17 ;
+  INPUT ---        15 16 ;
+  INPUT ---        15 ;
+
+  INPUT ---    group=6 F    rows=6 cols=6 Triang ;
+  INPUT ---        15 16 17 18 19 20 ;
+  INPUT ---        15 16 17 18 19 ;
+  INPUT ---        15 16 17 18 ;
+  INPUT ---        15 16 17 ;
+  INPUT ---        15 16 ;
+  INPUT ---        15 ;
+
+  INPUT ---    design matrix constraints=20 covariates=20;
+  INPUT ---        1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  007
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1;
+
+  INPUT ---    blabel(1)=S:(Intercept);
+
+  INPUT ---    blabel(2)=S:time2006;
+
+  INPUT ---    blabel(3)=S:time2007;
+
+  INPUT ---    blabel(4)=S:time2008;
+
+  INPUT ---    blabel(5)=S:time2009;
+
+  INPUT ---    blabel(6)=S:time2010;
+
+  INPUT ---    blabel(7)=S:time2011;
+
+  INPUT ---    blabel(8)=p:(Intercept);
+
+  INPUT ---    blabel(9)=p:age2;
+
+  INPUT ---    blabel(10)=p:age3;
+
+  INPUT ---    blabel(11)=p:age4;
+
+  INPUT ---    blabel(12)=p:age5;
+
+  INPUT ---    blabel(13)=p:age6;
+
+  INPUT ---    blabel(14)=r:(Intercept);
+
+  INPUT ---    blabel(15)=F:(Intercept);
+
+  INPUT ---    blabel(16)=F:age1;
+
+  INPUT ---    blabel(17)=F:age2;
+
+  INPUT ---    blabel(18)=F:age3;
+
+  INPUT ---    blabel(19)=F:age4;
+
+  INPUT ---    blabel(20)=F:age5;
+
+  INPUT ---    rlabel(1)=S g41 c2005 c1 a0 t2005;
+
+  INPUT ---    rlabel(2)=S g41 c2005 c1 a1 t2006;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:36    Page  008
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+  INPUT ---    rlabel(3)=S g41 c2005 c1 a2 t2007;
+
+  INPUT ---    rlabel(4)=S g41 c2005 c1 a3 t2008;
+
+  INPUT ---    rlabel(5)=S g41 c2005 c1 a4 t2009;
+
+  INPUT ---    rlabel(6)=S g41 c2005 c1 a5 t2010;
+
+  INPUT ---    rlabel(7)=S g41 c2005 c1 a6 t2011;
+
+  INPUT ---    rlabel(8)=p g41 c2005 c1 a1 t2006;
+
+  INPUT ---    rlabel(9)=p g41 c2005 c1 a2 t2007;
+
+  INPUT ---    rlabel(10)=p g41 c2005 c1 a3 t2008;
+
+  INPUT ---    rlabel(11)=p g41 c2005 c1 a4 t2009;
+
+  INPUT ---    rlabel(12)=p g41 c2005 c1 a5 t2010;
+
+  INPUT ---    rlabel(13)=p g41 c2005 c1 a6 t2011;
+
+  INPUT ---    rlabel(14)=r g41 c2005 c1 a0 t2005;
+
+  INPUT ---    rlabel(15)=F g41 c2005 c1 a0 t2005;
+
+  INPUT ---    rlabel(16)=F g41 c2005 c1 a1 t2006;
+
+  INPUT ---    rlabel(17)=F g41 c2005 c1 a2 t2007;
+
+  INPUT ---    rlabel(18)=F g41 c2005 c1 a3 t2008;
+
+  INPUT ---    rlabel(19)=F g41 c2005 c1 a4 t2009;
+
+  INPUT ---    rlabel(20)=F g41 c2005 c1 a5 t2010;
+
+ Link Function Used is LOGIT        
+
+ Variance Estimation Procedure Used is 2ndPart 
+
+ M(t+1):
+
+
+
+ -2logL(saturated) = 1739.8188     
+ Effective Sample Size = 7075
+
+ Number of function evaluations was 96 for 20 parameters.
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:37    Page  009
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+ Time for numerical optimization was 2.12 seconds.
+ -2logL { S(~time)p(~age)r(~1)F(~age) } = 2659.1964     
+ Penalty { S(~time)p(~age)r(~1)F(~age) } = -0.0000000    
+ Gradient { S(~time)p(~age)r(~1)F(~age) }:
+  0.2507207E-04  0.000000     0.6018909E-04 0.7327733E-05  0.000000    
+   0.000000     0.1185708E-04 0.3736077E-04 0.4130704E-04 0.3379657E-04
+  0.1543675E-04  0.000000      0.000000     0.5520217E-04 0.3536418E-05
+   0.000000     0.2580882E-06 0.2199465E-05 0.3172825E-06 0.3155648E-06
+ S Vector { S(~time)p(~age)r(~1)F(~age) }:
+   286.3424      21.25905      7.511042      1.986460      1.531711    
+  0.5684941     0.3640511     0.2194283     0.2699516E-01 0.4369535E-05
+  0.1306000E-05 0.1097431E-07 0.5762186E-08 0.3039729E-08 0.2922323E-08
+  0.2462412E-08 0.8026816E-09 0.4582703E-09 0.7867831E-10 0.1235200E-10
+ Time to compute number of parameters was 0.50 seconds.
+   Threshold =  0.4200000E-06     Condition index =  0.4313717E-13     New Threshold =  0.5523982E-10
+ New Guessimate of Estimated Parameters { S(~time)p(~age)r(~1)F(~age) } = 11          
+ Conditioned S Vector { S(~time)p(~age)r(~1)F(~age) }:
+   1.000000     0.7424345E-01 0.2623098E-01 0.6937359E-02 0.5349230E-02
+  0.1985365E-02 0.1271384E-02 0.7663143E-03 0.9427581E-04 0.1525983E-07
+  0.4560973E-08 0.3832583E-10 0.2012341E-10 0.1061572E-10 0.1020569E-10
+  0.8599537E-11 0.2803223E-11 0.1600428E-11 0.2747701E-12 0.4313717E-13
+ Number of Estimated Parameters { S(~time)p(~age)r(~1)F(~age) } = 9          
+ DEVIANCE { S(~time)p(~age)r(~1)F(~age) } = 919.37766                     
+ DEVIANCE Degrees of Freedom { S(~time)p(~age)r(~1)F(~age) } = 6            
+ c-hat { S(~time)p(~age)r(~1)F(~age) } = 153.22961                     
+ AIC { S(~time)p(~age)r(~1)F(~age) } = 2677.1964                  
+ AICc { S(~time)p(~age)r(~1)F(~age) } = 2677.2219                    
+ BIC { S(~time)p(~age)r(~1)F(~age) } = 2738.9753                    
+ Pearson Chisquare { S(~time)p(~age)r(~1)F(~age) } = Not a Number               
+ Possible Encounter Histories { S(~time)p(~age)r(~1)F(~age) } = 896             
+ Pearson Chisquare df { S(~time)p(~age)r(~1)F(~age) } = 851        
+ Pearson chat { S(~time)p(~age)r(~1)F(~age) } = Not a Number               
+ Sum(Observed/Expected) { S(~time)p(~age)r(~1)F(~age) } = Not a Number               
+ Fletcher chat { S(~time)p(~age)r(~1)F(~age) } = Not a Number               
+
+
+               LOGIT Link Function Parameters of { S(~time)p(~age)r(~1)F(~age) }
+                                                              95% Confidence Interval
+ Parameter                    Beta         Standard Error      Lower           Upper
+ -------------------------  --------------  --------------  --------------  --------------
+    1:S:(Intercept)         0.8137620       2.8052624       -4.6845524      6.3120764     
+    2:S:time2006            -1.8005305      3.5532454       -8.7648916      5.1638305     
+    3:S:time2007            -0.5110596      3.4162083       -7.2068279      6.1847087     
+    4:S:time2008            -5.2058427      3.2679091       -11.610945      1.1992592     
+    5:S:time2009            101.62237       0.0000000       101.62237       101.62237     
+    6:S:time2010            52.240846       0.0000000       52.240846       52.240846     
+    7:S:time2011            -18.176222      478.41938       -955.87823      919.52579     
+    8:p:(Intercept)         -6.3030718      0.4498085       -7.1846965      -5.4214471    
+    9:p:age2                -0.1008980      0.8395775       -1.7464700      1.5446741     
+   10:p:age3                1.6910891       1.2724110       -0.8028365      4.1850146     
+   11:p:age4                4.8917532       1.4400704       2.0692152       7.7142912     
+   12:p:age5                -42.423174      0.0000000       -42.423174      -42.423174    
+   13:p:age6                157.57680       0.0000000       157.57680       157.57680     
+   14:r:(Intercept)         -3.1189260      0.0590959       -3.2347540      -3.0030981    
+   15:F:(Intercept)         11.858988       874.87688       -1702.8997      1726.6177     
+   16:F:age1                123.37274       0.0000000       123.37274       123.37274     
+   17:F:age2                175.19834       0.0000000       175.19834       175.19834     
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:37    Page  010
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   18:F:age3                19.675360       0.0000000       19.675360       19.675360     
+   19:F:age4                142.32565       0.0000000       142.32565       142.32565     
+   20:F:age5                143.10579       0.0000000       143.10579       143.10579     
+
+
+               Real Function Parameters of { S(~time)p(~age)r(~1)F(~age) }
+                                                               95% Confidence Interval
+  Parameter                  Estimate       Standard Error      Lower           Upper
+ --------------------------  --------------  --------------  --------------  --------------
+     1:S g41 c2005 c1 a0 t2  0.6929106       0.5969192       0.0091523       0.9981890                           
+     2:S g41 c2005 c1 a1 t2  0.2715508       0.2515172       0.0299182       0.8183750                           
+     3:S g41 c2005 c1 a2 t2  0.5751030       0.4937714       0.0251403       0.9861186                           
+     4:S g41 c2005 c1 a3 t2  0.0122237       0.0138090       0.0013136       0.1042862                           
+     5:S g41 c2005 c1 a4 t2  1.0000000       0.0000000       1.0000000       1.0000000                           
+     6:S g41 c2005 c1 a5 t2  1.0000000       0.0000000       1.0000000       1.0000000                           
+     7:S g41 c2005 c1 a6 t2  0.2881240E-007  0.1378414E-004  0.2840809E-311  1.0000000                           
+     8:p g41 c2005 c1 a1 t2  0.0018273       0.8204455E-003  0.7575248E-003  0.0044013                           
+     9:p g41 c2005 c1 a2 t2  0.0016522       0.0012030       0.3961205E-003  0.0068642                           
+    10:p g41 c2005 c1 a3 t2  0.0098344       0.0126333       0.7804970E-003  0.1121300                           
+    11:p g41 c2005 c1 a4 t2  0.1960262       0.2140295       0.0167394       0.7773815                           
+    12:p g41 c2005 c1 a5 t2  0.6893825E-021  0.0000000       0.6893825E-021  0.6893825E-021                      
+    13:p g41 c2005 c1 a6 t2  1.0000000       0.0000000       1.0000000       1.0000000                           
+    14:r g41 c2005 c1 a0 t2  0.0423333       0.0023958       0.0378786       0.0472861                           
+    15:F g41 c2005 c1 a0 t2  0.9999929       0.0061894       0.1393656E-298  1.0000000                           
+    16:F g41 c2005 c1 a1 t2  1.0000000       0.0000000       1.0000000       1.0000000                           
+    17:F g41 c2005 c1 a2 t2  1.0000000       0.0000000       1.0000000       1.0000000                           
+    18:F g41 c2005 c1 a3 t2  1.0000000       0.1730770E-010  1.0000000       1.0000000                           
+    19:F g41 c2005 c1 a4 t2  1.0000000       0.0000000       1.0000000       1.0000000                           
+    20:F g41 c2005 c1 a5 t2  1.0000000       0.0000000       1.0000000       1.0000000                           
+
+ Attempted ordering of parameters by estimatibility:
+  14  1  8  9 11 10  4  3  2  7 15  6  5 18 13 16 12 17 19 20
+ Beta number 20 is a singular value.
+
+     CPU Time in seconds for last procedure was 2.65
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.0 Jun 2014   31-Jan-2015 13:37:37    Page  011
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+  INPUT --- proc stop;
+
+     CPU Time in minutes for this job was 0.04
+
+     Time Start = 13:37:36.840   Time End = 13:37:37.510
+
+     Wall Clock Time in minutes for this job was 0.01
+
+
+          E X E C U T I O N   S U C C E S S F U L 

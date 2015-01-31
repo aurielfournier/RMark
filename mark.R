@@ -2,10 +2,10 @@
 setwd("~/SourceTree/RMark")
 library(RMark)
 options(scipen=999)
-dat <- read.csv("live_dead_enhist.csv",header=T,colClasses=c(NA,NA,NA,NA,"character"))
-dat <- dat[,2:ncol(dat)]
+dat <- read.csv('live_dead_enhist.csv',header=T,colClasses=c("character","factor","factor"))
 
 #age structure, define groups (sex)
-dat <- process.data(dat, begin.time=2000, model="Burnham",groups=c("sex","age"))
+pdat <- process.data(dat, begin.time=2005, model="Burnham",groups=c("sex","age"), time.intervals=c(1,1,1,1,1,1,1))
 
 model <- mark(dat, model="Burnham")
+model1 <- mark(dat, model="Burnham", model.parameters=group.covariates)

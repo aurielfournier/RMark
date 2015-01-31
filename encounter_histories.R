@@ -24,7 +24,7 @@ enhist <- data.frame(cdat$band_id, cdat$sex , cdat$age, cdat$cap)
 enhist$cdat.cap <- as.character(enhist$cdat.cap)
 colnames(enhist) <- c("band","sex","age","ch")
 write.csv(enhist, 'enhist.csv')
-
+write.csv(cdat, 'cago_cap_history.csv', row.names=F)
 # live/dead recover encouter history ------------------------------
 rat <- rat[rat$l_d != "unknown",] #remove the unknowns
 rat <- rat[rat$sex != 0,] #removes unknown sex
@@ -57,4 +57,5 @@ cdat <- cdat[!(cdat$"2005_alive"==0&cdat$"2006_alive"==0&cdat$"2007_alive"==0&cd
 
 enhist <- cdat[,c("cap","sex","age")]
 colnames(enhist) <- c("ch","sex","age")
-write.table(enhist, 'live_dead_enhist.txt', row.names=F)
+write.csv(enhist, 'live_dead_enhist.csv', row.names=F)
+
