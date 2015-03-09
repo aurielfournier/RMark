@@ -1,6 +1,6 @@
 #Cago
 #Lincoln-Peterson
-
+setwd("~/GitHub/RMark")
 dat <- read.csv("cago_cap_history.csv")
 
 Nhat <- as.data.frame(matrix(ncol=2, nrow=(2011-2005)))
