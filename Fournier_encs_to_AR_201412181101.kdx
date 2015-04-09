@@ -1,0 +1,306 @@
+Layout {
+  FileType : "delimited"
+  Delimiter : ","
+  Latitude : "14"
+  Longitude : "16"
+  SkipRows : "1"
+  TextCodec : "System"
+  FieldDefinitions {
+    0 {
+      Name : "B AGE CODE"
+      Type : "int"
+    }
+    1 {
+      Name : "B AREA CODE"
+      Type : "int"
+    }
+    2 {
+      Name : "B BAND SIZE CODE"
+      Type : "int"
+    }
+    3 {
+      Name : "B BAND STATUS CODE"
+      Type : "int"
+    }
+    4 {
+      Name : "B BAND TYPE CODE"
+      Type : "int"
+    }
+    5 {
+      Name : "B BIRD STATUS"
+      Type : "int"
+    }
+    6 {
+      Name : "B COMMENTS"
+      Type : "int"
+    }
+    7 {
+      Name : "B COORD PRECISION"
+      Type : "int"
+    }
+    8 {
+      Name : "B DIRECTION CODE"
+      Type : "int"
+    }
+    9 {
+      Name : "B EXTRA INFO CODE"
+      Type : "int"
+    }
+    10 {
+      Name : "B FLYWAY CODE"
+      Type : "int"
+    }
+    11 {
+      Name : "B HOW AGED CODE"
+      Type : "int"
+    }
+    12 {
+      Name : "B HOW CAPTURED"
+      Type : "int"
+    }
+    13 {
+      Name : "B HOW SEXED CODE"
+      Type : "int"
+    }
+    14 {
+      Name : "B LAT"
+      Type : "int"
+    }
+    15 {
+      Name : "B LAT FLOAT"
+      Type : "double"
+    }
+    16 {
+      Name : "B LON"
+      Type : "int"
+    }
+    17 {
+      Name : "B LON FLOAT"
+      Type : "double"
+    }
+    18 {
+      Name : "B MARKER LONG DESC"
+      Type : "int"
+    }
+    19 {
+      Name : "B PERMIT NUM"
+      Type : "int"
+    }
+    20 {
+      Name : "B REMARKS"
+      Type : "int"
+    }
+    21 {
+      Name : "B SEX CODE"
+      Type : "int"
+    }
+    22 {
+      Name : "B SPECIES ID"
+      Type : "int"
+    }
+    23 {
+      Name : "B SPECIES NAME"
+      Type : "string"
+    }
+    24 {
+      Name : "BAND ID"
+      Type : "int"
+    }
+    25 {
+      Name : "BANDING DATE"
+      Type : "string"
+    }
+    26 {
+      Name : "BANDING DAY"
+      Type : "int"
+    }
+    27 {
+      Name : "BANDING MONTH"
+      Type : "int"
+    }
+    28 {
+      Name : "BANDING YEAR"
+      Type : "int"
+    }
+    29 {
+      Name : "BEARING"
+      Type : "string"
+    }
+    30 {
+      Name : "DISTANCE"
+      Type : "double"
+    }
+    31 {
+      Name : "E AREA CODE"
+      Type : "int"
+    }
+    32 {
+      Name : "E CAPTURE TIME"
+      Type : "int"
+    }
+    33 {
+      Name : "E CERTIFICATE FLAG"
+      Type : "string"
+    }
+    34 {
+      Name : "E CERTIFICATE LANGUAGE"
+      Type : "string"
+    }
+    35 {
+      Name : "E COMMENTS"
+      Type : "string"
+    }
+    36 {
+      Name : "E COORD PRECISION"
+      Type : "int"
+    }
+    37 {
+      Name : "E COUNTRY CODE"
+      Type : "string"
+    }
+    38 {
+      Name : "E COUNTY CODE"
+      Type : "int"
+    }
+    39 {
+      Name : "E CREATE DATE"
+      Type : "string"
+    }
+    40 {
+      Name : "E CREATE MONTH"
+      Type : "int"
+    }
+    41 {
+      Name : "E CREATE YEAR"
+      Type : "int"
+    }
+    42 {
+      Name : "E DIRECTION CODE"
+      Type : "int"
+    }
+    43 {
+      Name : "E ENC COUNTY ORIGINAL"
+      Type : "int"
+    }
+    44 {
+      Name : "E FLYWAY CODE"
+      Type : "int"
+    }
+    45 {
+      Name : "E HOW CAPTURED"
+      Type : "int"
+    }
+    46 {
+      Name : "E HOW OBTAINED CODE"
+      Type : "int"
+    }
+    47 {
+      Name : "E LAT"
+      Type : "int"
+    }
+    48 {
+      Name : "E LAT FLOAT"
+      Type : "double"
+    }
+    49 {
+      Name : "E LOCATION DESCRIPTION"
+      Type : "string"
+    }
+    50 {
+      Name : "E LOCATION ID"
+      Type : "int"
+    }
+    51 {
+      Name : "E LON"
+      Type : "int"
+    }
+    52 {
+      Name : "E LON FLOAT"
+      Type : "double"
+    }
+    53 {
+      Name : "E MARKER LONG DESC"
+      Type : "string"
+    }
+    54 {
+      Name : "E PLACE NAME"
+      Type : "string"
+    }
+    55 {
+      Name : "E PRESENT CONDITION CODE"
+      Type : "int"
+    }
+    56 {
+      Name : "E REMARKS"
+      Type : "string"
+    }
+    57 {
+      Name : "E SPECIES ID"
+      Type : "int"
+    }
+    58 {
+      Name : "E SPECIES NAME"
+      Type : "string"
+    }
+    59 {
+      Name : "E STATE CODE"
+      Type : "int"
+    }
+    60 {
+      Name : "E WHO OBTAINED CODE"
+      Type : "int"
+    }
+    61 {
+      Name : "E WHY REPORTED CODE"
+      Type : "int"
+    }
+    62 {
+      Name : "ENC PERMIT"
+      Type : "int"
+    }
+    63 {
+      Name : "ENCOUNTER DATE"
+      Type : "string"
+    }
+    64 {
+      Name : "ENCOUNTER DAY"
+      Type : "int"
+    }
+    65 {
+      Name : "ENCOUNTER MONTH"
+      Type : "int"
+    }
+    66 {
+      Name : "ENCOUNTER YEAR"
+      Type : "int"
+    }
+    67 {
+      Name : "HSS"
+      Type : "int"
+    }
+    68 {
+      Name : "MIN AGE AT ENC"
+      Type : "double"
+    }
+    69 {
+      Name : "ORIGINAL BAND"
+      Type : "int"
+    }
+    70 {
+      Name : "OTHER BANDS"
+      Type : "int"
+    }
+    71 {
+      Name : "SAME 10 MIN BLOCK"
+      Type : "string"
+    }
+    72 {
+      Name : "REC_SOURCE"
+      Type : "string"
+    }
+    73 {
+      Name : "ENC ERROR"
+      Type : "int"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+name,flyway,B.AREA.CODE
+Africa,0,1
+Alabama,2,2
+Alaska,5,3
+Alberta,6,4
+Antarctica,0,99
+Argentina,8,5
+Arizona,4,6
+Arkansas,2,7
+Asia,0,8
+At Sea (oceans),0,94
+Bahama Islands,9,9
+Belize,7,12
+Bermuda,1,97
+Bolivia,8,13
+Brazil,8,10
+British Columbia,6,11
+California,4,14
+Canada (Unknown State),6,CA
+Chile,8,15
+Colombia,8,16
+Colorado,3,17
+Connecticut,1,18
+Costa Rica,7,19
+Cuba,9,20
+Delaware,1,21
+District of Columbia,1,22
+Dominican Republic and Haiti,9,31
+Ecuador,8,23
+El Salvador,7,78
+Europe,0,24
+Florida,1,25
+"French Guiana, Guyana and Surinam",8,30
+Georgia,1,27
+Greenland,0,28
+Guatemala,7,29
+Honduras,7,32
+Idaho,4,33
+Illinois,2,34
+Indiana,2,35
+Iowa,2,36
+Jamaica and Cayman Islands,9,37
+Kansas,3,38
+Kentucky,2,39
+Lesser Antilles,9,41
+Louisiana,2,42
+Maine,1,44
+Manitoba,6,45
+Maryland,1,46
+Massachusetts,1,47
+Mexico,7,48
+Michigan,2,49
+Minnesota,2,50
+Mississippi,2,51
+Missouri,2,52
+Montana,3,53
+Nebraska,3,54
+Nevada,4,55
+New Brunswick,6,56
+New Hampshire,1,58
+New Jersey,1,59
+New Mexico,3,60
+New York,1,61
+Newfoundland and Labrador and St. Pierre et Miquelon,6,57
+Nicaragua,7,62
+North Carolina,1,63
+North Dakota,3,64
+Northwest Territories**,6,43
+Nova Scotia,6,65
+Nunavut**,6,40
+"Oceania (including Hawaii), Australia, New Zealand and Phillipines",0,96
+Ohio,2,66
+Oklahoma,3,67
+Ontario,6,68
+Oregon,4,69
+Panama,7,70
+Paraguay,8,71
+Pennsylvania,1,72
+Peru,8,73
+Prince Edward Island,6,75
+Puerto Rico,9,74
+Quebec,6,76
+Rhode Island,1,77
+Russia,0,98
+Saskatchewan,6,79
+South Carolina,1,80
+South Dakota,3,81
+Tennessee,2,82
+Texas,3,83
+US (Unknown State),X,US
+Unknown,0,0
+Uruguay,8,84
+Utah,4,85
+Venezuela,8,86
+Vermont,1,87
+Virginia,1,88
+Washington,4,89
+West Virginia,1,90
+Wisconsin,2,91
+Wyoming,3,92
+Yukon Territory,6,93
