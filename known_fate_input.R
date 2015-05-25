@@ -30,3 +30,6 @@ ch$ch <- as.character(ch$ch)
 pd <- process.data(data=ch, begin.time=1, model="Known")
 
 dd <- make.design.data(pd)
+
+
+
