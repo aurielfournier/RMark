@@ -1,7 +1,7 @@
 # Making Encounter Histories
 library(reshape)
-setwd("~/RMark")
-dat <- read.csv("canada_geese_arkansas.csv",header=T)
+
+dat <- read.csv("C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas.csv",header=T)
 dat$b_new_year <- ifelse(dat$banding_month>=6,dat$banding_year, dat$banding_year-1)
 dat$e_new_year <- ifelse(dat$encounter_month>=6,dat$encounter_year, dat$encounter_year-1)
 b <- dat[,c("band_id","b_new_year","l_d","b_age_code","b_sex_code")]
@@ -10,7 +10,7 @@ e <- dat[,c("band_id","e_new_year","l_d","b_age_code","b_sex_code")]
 colnames(e) <- c("band_id","year","l_d","age","sex")
 rat <- rbind(b,e)
 rat$num <- 1
-rat <- rat[rat$year>=2005,]
+rat <- rat[rat$year>=2006,]
 rat <- rat[rat$year<=2011,]
 
 
@@ -36,7 +36,7 @@ age <- cast(data=rat, band_id ~ age)
 
 cdat[4:ncol(cdat)] <- ifelse(cdat[4:ncol(cdat)]>=1, 1,0)
 
-cdat[,4:ncol(cdat)][cdat$"2005_dead"==1,]<-0
+
 cdat[,6:ncol(cdat)][cdat$"2006_dead"==1,]<-0
 cdat[,8:ncol(cdat)][cdat$"2007_dead"==1,]<-0
 cdat[,10:ncol(cdat)][cdat$"2008_dead"==1,]<-0
@@ -48,14 +48,14 @@ cdat[4:ncol(cdat)] <- ifelse(cdat[4:ncol(cdat)]>=1, 1,0)
 
 
 
-colnames(cdat) <- c("band_id","sex","age","2005_alive","2005_dead","2006_alive","2006_dead","2007_alive","2007_dead","2008_alive","2008_dead","2009_alive","2009_dead","2010_alive","2010_dead","2011_alive","2011_dead")
+colnames(cdat) <- c("band_id","sex","age","2006_alive","2006_dead","2007_alive","2007_dead","2008_alive","2008_dead","2009_alive","2009_dead","2010_alive","2010_dead","2011_alive","2011_dead")
 #create capture history
-cdat$cap <- paste(cdat$"2005_alive",cdat$"2005_dead",cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead", sep="")
+cdat$cap <- paste(cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead", sep="")
 # below removes birds banded before 2005 that were never recovered during the study period
-cdat <- cdat[!(cdat$"2005_alive"==0&cdat$"2006_alive"==0&cdat$"2007_alive"==0&cdat$"2008_alive"==0&cdat$"2009_alive"==0&cdat$"2010_alive"==0&cdat$"2011_alive"==0),]
+cdat <- cdat[!(cdat$"2006_alive"==0&cdat$"2007_alive"==0&cdat$"2008_alive"==0&cdat$"2009_alive"==0&cdat$"2010_alive"==0&cdat$"2011_alive"==0),]
 
 
 enhist <- cdat[,c("cap","sex","age")]
 colnames(enhist) <- c("ch","sex","age")
-write.csv(enhist, 'live_dead_enhist.csv', row.names=F)
+write.csv(enhist, 'C:/Users/avanderlaar/Documents/GitHub/RMark/live_dead_enhist.csv', row.names=F)
 
