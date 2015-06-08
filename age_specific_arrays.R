@@ -1,6 +1,6 @@
 # M Arrays
 library(reshape)
-dat <- read.csv("canada_geese_arkansas.csv")
+dat <- read.csv("~/GitHub/RMark/canada_geese_arkansas_bbl.csv")
 dat <- dat[dat$b_age_code!=0,]
 
 ahy <- dat[dat$b_age_code==1,]

@@ -1,7 +1,7 @@
 # Making Encounter Histories
 library(reshape)
 
-dat <- read.csv("~/GitHub/RMark/canada_geese_arkansas.csv",header=T)
+dat <- read.csv("C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas.csv",header=T)
 dat$b_new_year <- ifelse(dat$banding_month>=6,dat$banding_year, dat$banding_year-1)
 dat$e_new_year <- ifelse(dat$encounter_month>=6,dat$encounter_year, dat$encounter_year-1)
 b <- dat[,c("band_id","b_new_year","l_d","b_age_code","b_sex_code")]
