@@ -2,17 +2,20 @@
 library(reshape)
 
 dat <- read.csv("C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas.csv",header=T)
+
 dat <- dat[dat$banding_year>=2006,]
-dat <- dat[dat$encounter_year>=2006,]
+
 dat$b_new_year <- ifelse(dat$banding_month>=6,dat$banding_year, dat$banding_year-1)
 dat$e_new_year <- ifelse(dat$encounter_month>=6,dat$encounter_year, dat$encounter_year-1)
+
 b <- dat[,c("band_id","b_new_year","l_d","b_age_code","b_sex_code")]
 colnames(b) <- c("band_id","year","l_d","age","sex")
 e <- dat[,c("band_id","e_new_year","l_d","b_age_code","b_sex_code")]
 colnames(e) <- c("band_id","year","l_d","age","sex")
 rat <- rbind(b,e)
 rat$num <- 1
-rat <- rat[!(is.na(rat$year)),]
+rat <- rat[!(is.na(rat$band_id)),]
+
 # Regular Encounter History ---------------------------------------------------
 
 # cdat <- cast(data=rat, band_id + age + sex ~ year)
@@ -25,8 +28,8 @@ rat <- rat[!(is.na(rat$year)),]
 
 # live/dead recover encouter history ------------------------------
 rat <- rat[rat$l_d != "unknown",] #remove the unknowns
-rat <- rat[rat$age != 0,] #removes unknown age
-rat <- rat[!(is.na(rat$l_d)),] # remove the NA's
+rat <- rat[rat$age != 0,] #removes unknown age's
+rat <- rat[!(is.na(rat$year)),]
 cdat <- cast(data=rat, band_id ~ year + l_d)
 age <- cast(data=rat, band_id ~ age)
 cdat[2:ncol(cdat)] <- ifelse(cdat[2:ncol(cdat)]>=1, 1,0)

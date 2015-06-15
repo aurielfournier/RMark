@@ -7,7 +7,7 @@ dat3 <- read.csv('C:/Users/avanderlaar/Documents/GitHub/RMark/Fournier_encs_to_A
 dat2 <- read.csv('C:/Users/avanderlaar/Documents/GitHub/RMark/agfc_banding_00_11.csv')
 dat4 <- read.csv('C:/Users/avanderlaar/Documents/GitHub/RMark/agfc_recaps.csv')
 
-dat5 <- merge(dat2, dat4, by="band_id")
+dat5 <- merge(dat2, dat4, by="band_id", all.x=TRUE)
 dat5$value <- 1
 cdat5 <- cast(data=dat5, year ~ encounter_year)
 
@@ -20,13 +20,17 @@ dat5$b_sex_code <- ifelse(dat5$b_sex_code=="M",4,
 dat5$b_age_code <- ifelse(dat5$b_age_code=="AHY",1,
                           ifelse(dat5$b_age_code=="HY",2,
                                  ifelse(dat5$b_age_code=="AA",1,
-                                        ifelse(dat5$b_age_code=="L",4,
+                                        ifelse(dat5$b_age_code=="L",2,
                                                ifelse(dat5$b_age_code=="A",1,NA)))))
 
 dat5 <- dat5[!(is.na(dat5$b_age_code)),]
 
 
 dat5 <- dat5[,c("band_id","b_age_code","b_sex_code","banding_day","banding_month","banding_year","encounter_year","e_present_condition_code")]
+
+
+
+######################################################
 
 dat1$state <- "AR"
 dat1 <- dat1[dat1$SPECIES_ID==1720,] #removes the cackling geese. 
@@ -64,11 +68,11 @@ dat1_2$l_d <- ifelse(dat1_2$e_present_condition_code==1|dat1_2$e_present_conditi
                   ifelse(dat1_2$e_present_condition_code==4|dat1_2$e_present_condition_code==5|dat1_2$e_present_condition_code==6,"dead",
                         ifelse(dat1_2$e_present_condition_code==7|dat1_2$e_present_condition_code==8|dat1_2$e_present_condition_code==9|dat1_2$e_present_condition_code==10|dat1_2$e_present_condition_code==11|dat1_2$e_present_condition_code==12|dat1_2$e_present_condition_code==13|dat1_2$e_present_condition_code==14|dat1_2$e_present_condition_code==15|dat1_2$e_present_condition_code==16,"alive",NA)))
 
-dat1_2 <- dat1_2[dat1_2$banding_year>=2000,]
+dat1_2 <- dat1_2[dat1_2$banding_year>=2006,]
 
 dat5$encounter_month <- NA
 
 dat <- rbind(dat5, dat1_2[,c(1:6,10:12,9)])
 write.csv(dat, "C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas.csv", row.names=F)
 write.csv(dat1_2, "C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas_bbl.csv", row.names = F)
-write.csv(dat2, "C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas_agfc.csv", row.names=F)
+write.csv(dat5, "C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas_agfc.csv", row.names=F)
