@@ -26,6 +26,39 @@ rat <- rat[!(is.na(rat$band_id)),]
 # colnames(enhist) <- c("band","sex","age","ch")
 # write.csv(enhist, 'enhist.csv')
 
+## Dead Recovery only
+
+dat <- read.csv("C:/Users/avanderlaar/Documents/GitHub/RMark/canada_geese_arkansas_brownie.csv",header=T)
+rat <- dat[dat$banding_year>=2006,]
+rat <- rat[rat$l_d != "unknown",] #remove the unknowns
+rat <- rat[rat$b_age_code != 0,] #removes unknown age's
+rat$num <- 1
+cdat <- cast(data=rat, band_id ~ banding_year + l_d)
+cdat <- cdat[,1:19]
+age <- cast(data=rat, band_id ~ b_age_code)
+age <- age[,1:4]
+
+cdat <- cbind(cdat, age[,2:4])
+cdat[2:ncol(cdat)] <- ifelse(cdat[2:ncol(cdat)]>=1, 1,0)
+cdat <- cdat[,c(1:13,20:22)]
+colnames(cdat) <- c("band_id","2006_alive","2006_dead","2007_alive","2007_dead","2008_alive","2008_dead","2009_alive","2009_dead","2010_alive","2010_dead","2011_alive","2011_dead","ahy","hy","local")
+
+cdat$young <- ifelse(cdat$hy==1|cdat$local==1,1,0)
+
+cdat <- cdat[!(cdat$"2006_alive"==0&cdat$"2007_alive"==0&cdat$"2008_alive"==0&cdat$"2009_alive"==0&cdat$"2010_alive"==0&cdat$"2011_alive"==0),]
+
+#create capture history
+cdat$cap <- paste(cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead", " ",cdat$ahy," ",cdat$young," ", ";", sep="")
+
+
+enhist <- data.frame(cdat$band_id, cdat$cap)
+colnames(enhist) <- c("band_id","ch")
+
+
+write.table(enhist[,2], 'C:/Users/avanderlaar/Documents/GitHub/RMark/cago_brownie.inp', row.names=F, col.names=F, quote=F)
+
+
+########################################################
 # live/dead recover encouter history ------------------------------
 rat <- rat[rat$l_d != "unknown",] #remove the unknowns
 rat <- rat[rat$age != 0,] #removes unknown age's
@@ -57,9 +90,6 @@ cdat <- cdat[!(cdat$"2006_alive"==0&cdat$"2007_alive"==0&cdat$"2008_alive"==0&cd
 
 #create capture history
 cdat$cap <- paste(cdat$"2006_alive",cdat$"2006_dead",cdat$"2007_alive",cdat$"2007_dead",cdat$"2008_alive",cdat$"2008_dead",cdat$"2009_alive",cdat$"2009_dead",cdat$"2010_alive",cdat$"2010_dead",cdat$"2011_alive",cdat$"2011_dead", " ",cdat$ahy," ",cdat$young," ", ";", sep="")
-
-
-
 
 enhist <- data.frame(cdat$band_id, cdat$cap)
 colnames(enhist) <- c("band_id","ch")
